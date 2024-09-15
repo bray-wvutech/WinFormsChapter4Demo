@@ -174,19 +174,19 @@ public partial class MainForm : Form
 
         // String.Compare
         int retval = String.Compare(str1, str2);
-        MessageBox.Show(retval.ToString());
+        MessageBox.Show($"{str1} compare {str2} : {retval}");
 
         // case matters
         retval = String.Compare(str1, str3);
-        MessageBox.Show(retval.ToString());
+        MessageBox.Show($"{str1} compare {str3} : {retval}");
 
         // ignore case
         retval = String.Compare(str1, str3, true);
-        MessageBox.Show(retval.ToString());
+        MessageBox.Show($"{str1} compare no case {str3} : {retval}");
 
         // call from the string object
         retval = str1.CompareTo(str2);
-        MessageBox.Show(retval.ToString());
+        MessageBox.Show($"{str1}.compare {str2} : {retval}");
     }
 
     private void StringCompareDemo2()
@@ -197,12 +197,12 @@ public partial class MainForm : Form
 
         // String.Equals
         bool isEqual = String.Equals(str1, str3);
-        MessageBox.Show(isEqual.ToString());
+        MessageBox.Show($"{str1} equals {str3} : {isEqual}");
 
         // ignore case
         isEqual = String.Equals(str1, str3,
             StringComparison.OrdinalIgnoreCase);
-        MessageBox.Show(isEqual.ToString());
+        MessageBox.Show($"{str1} equals no case {str3} : {isEqual}");
     }
 
     private void StringCompareDemo3()
@@ -213,11 +213,12 @@ public partial class MainForm : Form
 
         // another way to ignore case
         int retval = str1.ToUpper().CompareTo(str3.ToUpper());
-        MessageBox.Show(retval.ToString());
+        MessageBox.Show($"{str1} to upper compare to {str3} : {retval}");
 
-        if (str1.ToUpper() == str2.ToUpper())
+        // or
+        if (str1.ToUpper() == str3.ToUpper())
         {
-            MessageBox.Show("strings not equal");
+            MessageBox.Show($"{str1} to upper == {str3} to upper");
         }
     }
 
@@ -350,7 +351,7 @@ public partial class MainForm : Form
     private void crustLoopButton_Click(object sender, EventArgs e)
     {
         // loop through each control in the group box
-        foreach (Control c in crustGroupBox.Controls) 
+        foreach (Control c in crustGroupBox.Controls)
         {
             // make sure its a radio button
             if (c.GetType() == typeof(RadioButton))
@@ -367,6 +368,84 @@ public partial class MainForm : Form
                 }
             }
         }
+    }
+
+    private void toppingDemoButton_Click(object sender, EventArgs e)
+    {
+        if (toppingPepperoniCheckBox.Checked)
+        {
+            MessageBox.Show("you want pepperoni");
+        }
+
+        if (toppingsSausageCheckBox.Checked)
+        {
+            MessageBox.Show("you want sausage");
+        }
+
+        if (toppingsMushroomsCheckBox.Checked)
+        {
+            MessageBox.Show("you want mushrooms");
+        }
+
+        if (toppingsPeppersCheckBox.Checked)
+        {
+            MessageBox.Show("you want peppers");
+        }
+    }
+
+    private void checkAllButton_Click(object sender, EventArgs e)
+    {
+        toppingPepperoniCheckBox.Checked = true;
+        toppingsMushroomsCheckBox.Checked = true;
+        toppingsSausageCheckBox.Checked = true;
+        toppingsPeppersCheckBox.Checked = true;
+    }
+
+    private void clearListButton_Click(object sender, EventArgs e)
+    {
+        demoListBox.Items.Clear();
+    }
+
+    private void UpdatePizzaTime()
+    {
+        // T is long time
+        string time = DateTime.Now.ToString("T");
+        lastChangedLabel.Text = $"Pizza changed at {time}";
+    }
+
+    private void thinCrustRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void handTossedRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void panRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void toppingPepperoniCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void toppingsSausageCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void toppingsMushroomsCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
+    }
+
+    private void toppingsPeppersCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePizzaTime();
     }
 }
 

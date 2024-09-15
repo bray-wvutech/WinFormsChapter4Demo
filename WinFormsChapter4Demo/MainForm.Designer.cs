@@ -33,10 +33,10 @@ partial class MainForm
         handTossedRadioButton = new RadioButton();
         thinCrustRadioButton = new RadioButton();
         toppingsGroupBox = new GroupBox();
-        checkBox4 = new CheckBox();
-        checkBox3 = new CheckBox();
-        checkBox2 = new CheckBox();
-        checkBox1 = new CheckBox();
+        toppingsPeppersCheckBox = new CheckBox();
+        toppingsMushroomsCheckBox = new CheckBox();
+        toppingsSausageCheckBox = new CheckBox();
+        toppingPepperoniCheckBox = new CheckBox();
         demoListBox = new ListBox();
         runButton = new Button();
         label1 = new Label();
@@ -45,6 +45,10 @@ partial class MainForm
         yTextBox = new TextBox();
         crustButton = new Button();
         crustLoopButton = new Button();
+        toppingDemoButton = new Button();
+        checkAllButton = new Button();
+        clearListButton = new Button();
+        lastChangedLabel = new Label();
         crustGroupBox.SuspendLayout();
         toppingsGroupBox.SuspendLayout();
         SuspendLayout();
@@ -71,6 +75,7 @@ partial class MainForm
         panRadioButton.TabStop = true;
         panRadioButton.Text = "Pan";
         panRadioButton.UseVisualStyleBackColor = true;
+        panRadioButton.CheckedChanged += panRadioButton_CheckedChanged;
         // 
         // handTossedRadioButton
         // 
@@ -80,8 +85,9 @@ partial class MainForm
         handTossedRadioButton.Size = new Size(115, 24);
         handTossedRadioButton.TabIndex = 1;
         handTossedRadioButton.TabStop = true;
-        handTossedRadioButton.Text = "Hand Tossed";
+        handTossedRadioButton.Text = "&Hand Tossed";
         handTossedRadioButton.UseVisualStyleBackColor = true;
+        handTossedRadioButton.CheckedChanged += handTossedRadioButton_CheckedChanged;
         // 
         // thinCrustRadioButton
         // 
@@ -93,59 +99,64 @@ partial class MainForm
         thinCrustRadioButton.TabStop = true;
         thinCrustRadioButton.Text = "Thin Crust";
         thinCrustRadioButton.UseVisualStyleBackColor = true;
+        thinCrustRadioButton.CheckedChanged += thinCrustRadioButton_CheckedChanged;
         // 
         // toppingsGroupBox
         // 
-        toppingsGroupBox.Controls.Add(checkBox4);
-        toppingsGroupBox.Controls.Add(checkBox3);
-        toppingsGroupBox.Controls.Add(checkBox2);
-        toppingsGroupBox.Controls.Add(checkBox1);
+        toppingsGroupBox.Controls.Add(toppingsPeppersCheckBox);
+        toppingsGroupBox.Controls.Add(toppingsMushroomsCheckBox);
+        toppingsGroupBox.Controls.Add(toppingsSausageCheckBox);
+        toppingsGroupBox.Controls.Add(toppingPepperoniCheckBox);
         toppingsGroupBox.Location = new Point(642, 12);
         toppingsGroupBox.Name = "toppingsGroupBox";
-        toppingsGroupBox.Size = new Size(175, 234);
+        toppingsGroupBox.Size = new Size(175, 188);
         toppingsGroupBox.TabIndex = 1;
         toppingsGroupBox.TabStop = false;
         toppingsGroupBox.Text = "Pizza &Toppings";
         // 
-        // checkBox4
+        // toppingsPeppersCheckBox
         // 
-        checkBox4.AutoSize = true;
-        checkBox4.Location = new Point(50, 196);
-        checkBox4.Name = "checkBox4";
-        checkBox4.Size = new Size(101, 24);
-        checkBox4.TabIndex = 3;
-        checkBox4.Text = "checkBox4";
-        checkBox4.UseVisualStyleBackColor = true;
+        toppingsPeppersCheckBox.AutoSize = true;
+        toppingsPeppersCheckBox.Location = new Point(17, 127);
+        toppingsPeppersCheckBox.Name = "toppingsPeppersCheckBox";
+        toppingsPeppersCheckBox.Size = new Size(83, 24);
+        toppingsPeppersCheckBox.TabIndex = 3;
+        toppingsPeppersCheckBox.Text = "Peppers";
+        toppingsPeppersCheckBox.UseVisualStyleBackColor = true;
+        toppingsPeppersCheckBox.CheckedChanged += toppingsPeppersCheckBox_CheckedChanged;
         // 
-        // checkBox3
+        // toppingsMushroomsCheckBox
         // 
-        checkBox3.AutoSize = true;
-        checkBox3.Location = new Point(47, 151);
-        checkBox3.Name = "checkBox3";
-        checkBox3.Size = new Size(101, 24);
-        checkBox3.TabIndex = 2;
-        checkBox3.Text = "checkBox3";
-        checkBox3.UseVisualStyleBackColor = true;
+        toppingsMushroomsCheckBox.AutoSize = true;
+        toppingsMushroomsCheckBox.Location = new Point(17, 97);
+        toppingsMushroomsCheckBox.Name = "toppingsMushroomsCheckBox";
+        toppingsMushroomsCheckBox.Size = new Size(108, 24);
+        toppingsMushroomsCheckBox.TabIndex = 2;
+        toppingsMushroomsCheckBox.Text = "Mushrooms";
+        toppingsMushroomsCheckBox.UseVisualStyleBackColor = true;
+        toppingsMushroomsCheckBox.CheckedChanged += toppingsMushroomsCheckBox_CheckedChanged;
         // 
-        // checkBox2
+        // toppingsSausageCheckBox
         // 
-        checkBox2.AutoSize = true;
-        checkBox2.Location = new Point(45, 98);
-        checkBox2.Name = "checkBox2";
-        checkBox2.Size = new Size(101, 24);
-        checkBox2.TabIndex = 1;
-        checkBox2.Text = "checkBox2";
-        checkBox2.UseVisualStyleBackColor = true;
+        toppingsSausageCheckBox.AutoSize = true;
+        toppingsSausageCheckBox.Location = new Point(17, 66);
+        toppingsSausageCheckBox.Name = "toppingsSausageCheckBox";
+        toppingsSausageCheckBox.Size = new Size(86, 24);
+        toppingsSausageCheckBox.TabIndex = 1;
+        toppingsSausageCheckBox.Text = "Sausage";
+        toppingsSausageCheckBox.UseVisualStyleBackColor = true;
+        toppingsSausageCheckBox.CheckedChanged += toppingsSausageCheckBox_CheckedChanged;
         // 
-        // checkBox1
+        // toppingPepperoniCheckBox
         // 
-        checkBox1.AutoSize = true;
-        checkBox1.Location = new Point(49, 54);
-        checkBox1.Name = "checkBox1";
-        checkBox1.Size = new Size(101, 24);
-        checkBox1.TabIndex = 0;
-        checkBox1.Text = "checkBox1";
-        checkBox1.UseVisualStyleBackColor = true;
+        toppingPepperoniCheckBox.AutoSize = true;
+        toppingPepperoniCheckBox.Location = new Point(17, 37);
+        toppingPepperoniCheckBox.Name = "toppingPepperoniCheckBox";
+        toppingPepperoniCheckBox.Size = new Size(98, 24);
+        toppingPepperoniCheckBox.TabIndex = 0;
+        toppingPepperoniCheckBox.Text = "&Pepperoni";
+        toppingPepperoniCheckBox.UseVisualStyleBackColor = true;
+        toppingPepperoniCheckBox.CheckedChanged += toppingPepperoniCheckBox_CheckedChanged;
         // 
         // demoListBox
         // 
@@ -175,7 +186,7 @@ partial class MainForm
         label1.Name = "label1";
         label1.Size = new Size(21, 20);
         label1.TabIndex = 4;
-        label1.Text = "X:";
+        label1.Text = "&X:";
         // 
         // xTextBox
         // 
@@ -191,7 +202,7 @@ partial class MainForm
         label2.Name = "label2";
         label2.Size = new Size(20, 20);
         label2.TabIndex = 6;
-        label2.Text = "Y:";
+        label2.Text = "&Y:";
         // 
         // yTextBox
         // 
@@ -206,7 +217,7 @@ partial class MainForm
         crustButton.Name = "crustButton";
         crustButton.Size = new Size(173, 29);
         crustButton.TabIndex = 8;
-        crustButton.Text = "Crust Demo";
+        crustButton.Text = "&Crust Demo";
         crustButton.UseVisualStyleBackColor = true;
         crustButton.Click += crustButton_Click;
         // 
@@ -216,15 +227,58 @@ partial class MainForm
         crustLoopButton.Name = "crustLoopButton";
         crustLoopButton.Size = new Size(171, 29);
         crustLoopButton.TabIndex = 9;
-        crustLoopButton.Text = "Crust Loop Demo";
+        crustLoopButton.Text = "&Crust Loop Demo";
         crustLoopButton.UseVisualStyleBackColor = true;
         crustLoopButton.Click += crustLoopButton_Click;
+        // 
+        // toppingDemoButton
+        // 
+        toppingDemoButton.Location = new Point(642, 217);
+        toppingDemoButton.Name = "toppingDemoButton";
+        toppingDemoButton.Size = new Size(175, 29);
+        toppingDemoButton.TabIndex = 10;
+        toppingDemoButton.Text = "Checkbox Demo";
+        toppingDemoButton.UseVisualStyleBackColor = true;
+        toppingDemoButton.Click += toppingDemoButton_Click;
+        // 
+        // checkAllButton
+        // 
+        checkAllButton.Location = new Point(642, 264);
+        checkAllButton.Name = "checkAllButton";
+        checkAllButton.Size = new Size(175, 29);
+        checkAllButton.TabIndex = 11;
+        checkAllButton.Text = "Make it supreme!";
+        checkAllButton.UseVisualStyleBackColor = true;
+        checkAllButton.Click += checkAllButton_Click;
+        // 
+        // clearListButton
+        // 
+        clearListButton.Location = new Point(12, 491);
+        clearListButton.Name = "clearListButton";
+        clearListButton.Size = new Size(250, 29);
+        clearListButton.TabIndex = 12;
+        clearListButton.Text = "Press Me Last";
+        clearListButton.UseVisualStyleBackColor = true;
+        clearListButton.Click += clearListButton_Click;
+        // 
+        // lastChangedLabel
+        // 
+        lastChangedLabel.BorderStyle = BorderStyle.FixedSingle;
+        lastChangedLabel.Location = new Point(375, 328);
+        lastChangedLabel.Name = "lastChangedLabel";
+        lastChangedLabel.Size = new Size(442, 67);
+        lastChangedLabel.TabIndex = 13;
+        lastChangedLabel.TextAlign = ContentAlignment.MiddleCenter;
         // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(888, 559);
+        Controls.Add(lastChangedLabel);
+        Controls.Add(clearListButton);
+        Controls.Add(checkAllButton);
+        Controls.Add(toppingDemoButton);
         Controls.Add(crustLoopButton);
         Controls.Add(crustButton);
         Controls.Add(yTextBox);
@@ -235,6 +289,9 @@ partial class MainForm
         Controls.Add(demoListBox);
         Controls.Add(toppingsGroupBox);
         Controls.Add(crustGroupBox);
+        FormBorderStyle = FormBorderStyle.FixedDialog;
+        MaximizeBox = false;
+        MinimizeBox = false;
         Name = "MainForm";
         Text = "Chapter 4 Demo";
         Load += MainForm_Load;
@@ -253,10 +310,10 @@ partial class MainForm
     private RadioButton handTossedRadioButton;
     private RadioButton thinCrustRadioButton;
     private GroupBox toppingsGroupBox;
-    private CheckBox checkBox4;
-    private CheckBox checkBox3;
-    private CheckBox checkBox2;
-    private CheckBox checkBox1;
+    private CheckBox toppingsPeppersCheckBox;
+    private CheckBox toppingsMushroomsCheckBox;
+    private CheckBox toppingsSausageCheckBox;
+    private CheckBox toppingPepperoniCheckBox;
     private ListBox demoListBox;
     private Button runButton;
     private Label label1;
@@ -265,4 +322,8 @@ partial class MainForm
     private TextBox yTextBox;
     private Button crustButton;
     private Button crustLoopButton;
+    private Button toppingDemoButton;
+    private Button checkAllButton;
+    private Button clearListButton;
+    private Label lastChangedLabel;
 }
